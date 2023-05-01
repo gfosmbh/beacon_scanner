@@ -1,0 +1,1 @@
+export 'src/beacon_scanner_service.dart';

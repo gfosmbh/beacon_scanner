@@ -1,0 +1,25 @@
+name: beacon_scanner_android
+description: The Android implementation of beacon_scanner_android
+version: 0.0.1
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+  flutter: ">=3.3.0"
+
+flutter:
+  plugin:
+    implements: beacon_scanner
+    platforms:
+      android:
+        package: com.lukangagames.beaconscanner
+        pluginClass: BeaconScannerPlugin
+        dartPluginClass: BeaconScannerAndroid
+
+dependencies:
+  flutter:
+    sdk: flutter
+  beacon_scanner_platform_interface: ^2.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
