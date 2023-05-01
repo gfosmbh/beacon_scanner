@@ -1,5 +1,6 @@
 name: beacon_scanner_platform_interface
 description: A common platform interface for the beacon_scanner_platform_interface plugin.
+repository: https://github.com/Lukangi/beacon_scanner/tree/main/beacon_scanner_platform_interface
 version: 0.0.1
 
 environment:
