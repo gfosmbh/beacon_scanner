@@ -111,5 +111,6 @@ abstract class BeaconScannerPlatform extends PlatformInterface {
   /// For iOS, this will does nothing because of private method.
   Future<bool> openBluetoothSettings() => throw UnimplementedError('openBluetoothSettings() has not been implemented.');
 
+  /// If the device can act like a beacon (advertising BLE-Frames)
   Future<bool> isBroadcastSupported() => throw UnimplementedError('isBroadcastSupported() has not been implemented.');
 }

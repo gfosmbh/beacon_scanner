@@ -1,16 +1,16 @@
 # beacon_scanner
 
-This plugin is based on flutter_beacon(https://pub.dev/packages/flutter_beacon) by Eyro Labs. 
+This plugin is based on flutter_beacon(https://pub.dev/packages/flutter_beacon) by Eyro Labs.
+This package can be combined with androids foreground services.
 It uses Android AltBeacon and iOS CoreLocation under the hood.
 
-An hybrid iBeacon scanner and transmitter SDK for Flutter plugin. Supports Android API 18+ and iOS 8+.
+An hybrid iBeacon scanner SDK for Flutter plugin. Supports Android API 18+ and iOS 8+.
 
 Features:
 
 * Automatic permission management
 * Ranging iBeacons  
 * Monitoring iBeacons
-* Transmit as iBeacon
 
 ## Installation
 
