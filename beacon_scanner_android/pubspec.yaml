@@ -12,7 +12,7 @@ flutter:
     implements: beacon_scanner
     platforms:
       android:
-        package: com.lukangagames.beaconscanner
+        package: com.lukangagames.plugins.beaconscanner
         pluginClass: BeaconScannerPlugin
         dartPluginClass: BeaconScannerAndroid
 
