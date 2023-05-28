@@ -1,5 +1,5 @@
 name: beacon_scanner_ios
-description: The Android implementation of beacon_scanner_android
+description: The iOS implementation of beacon_scanner_platform_interface
 repository: https://github.com/Lukangi/beacon_scanner/tree/main/beacon_scanner_ios
 version: 0.0.2
 
@@ -14,7 +14,7 @@ flutter:
       android:
         package: com.lukangagames.plugins.beaconscanner
         pluginClass: BeaconScannerPlugin
-        dartPluginClass: BeaconScannerAndroid
+        dartPluginClass: BeaconScannerIOS
 
 dependencies:
   flutter:
