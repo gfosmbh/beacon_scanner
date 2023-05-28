@@ -133,7 +133,7 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
                 result.success(true)
             }
 
-            "initializeAndCheck" -> initializeAndCheck(result)
+            "initializeAndCheckScanning" -> initializeAndCheck(result)
 
             "close" -> {
                 if (beaconManager != null) {

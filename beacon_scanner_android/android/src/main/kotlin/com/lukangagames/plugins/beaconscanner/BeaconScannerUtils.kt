@@ -31,7 +31,7 @@ internal object BeaconScannerUtils {
         map["minor"] = beacon.id3.toInt()
         map["rssi"] = beacon.rssi
         map["txPower"] = beacon.txPower
-        map["accuracy"] = String.format(Locale.US, "%.2f", beacon.distance)
+        map["accuracy"] = beacon.distance
         map["macAddress"] = beacon.bluetoothAddress
         return map
     }

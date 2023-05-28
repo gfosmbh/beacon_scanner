@@ -80,7 +80,7 @@
         return;
     }
     
-    if ([@"initializeAndCheck" isEqualToString:call.method]) {
+    if ([@"initializeAndCheckScanning" isEqualToString:call.method]) {
         [self initializeWithResult:result];
         return;
     }

@@ -31,7 +31,7 @@ class Beacon {
     this.txPower,
   });
 
-  factory Beacon.fromJson(Map<String, dynamic> json) => Beacon(
+  factory Beacon.fromJson(dynamic json) => Beacon(
     id: IBeaconId.fromJson(json),
     macAddress: json['macAddress'] as String?,
     rssi: json['rssi'] as int,

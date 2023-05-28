@@ -9,11 +9,11 @@ class Region {
   final String identifier;
 
   /// ID of Beacon (UUID, Major, Minor)
-  final IBeaconId beaconId;
+  final IBeaconId? beaconId;
 
   const Region({
     required this.identifier,
-    required this.beaconId,
+    this.beaconId,
   });
 
   @override
@@ -30,11 +30,11 @@ class Region {
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'identifier': this.identifier,
-      ...this.beaconId.toJson(),
+      if (beaconId != null) ...this.beaconId!.toJson(),
     };
   }
 
-  factory Region.fromJson(Map<String, dynamic> json) {
+  factory Region.fromJson(dynamic json) {
     return Region(
       identifier: json['identifier'] as String,
       beaconId: IBeaconId.fromJson(json),

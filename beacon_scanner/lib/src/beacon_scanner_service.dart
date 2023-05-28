@@ -28,9 +28,9 @@ class BeaconScanner {
   /// whether location services is enabled.
   Future<bool> initialize([bool withCheck = false]) async {
     if (withCheck) {
-      return isInitialize = await BeaconScannerPlatform.instance.initialize();
-    } else {
       return isInitialize = await BeaconScannerPlatform.instance.initializeAndCheckScanning();
+    } else {
+      return isInitialize = await BeaconScannerPlatform.instance.initialize();
     }
   }
 

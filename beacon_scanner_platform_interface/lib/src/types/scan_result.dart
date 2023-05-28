@@ -20,10 +20,10 @@ class ScanResult {
     };
   }
 
-  factory ScanResult.fromJson(Map<String, dynamic> json) {
+  factory ScanResult.fromJson(dynamic json) {
     return ScanResult(
-      region: json['region'] as Region,
-      beacons: (json['beacons'] as List<dynamic>).map((e) => Beacon.fromJson(e as Map<String, dynamic>)).toList(),
+      region: Region.fromJson(json['region']),
+      beacons: (json['beacons'] as List<dynamic>).map((e) => Beacon.fromJson(e)).toList(),
     );
   }
 }
