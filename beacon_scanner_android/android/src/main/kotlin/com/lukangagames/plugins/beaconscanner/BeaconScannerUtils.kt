@@ -33,7 +33,24 @@ internal object BeaconScannerUtils {
         map["txPower"] = beacon.txPower
         map["accuracy"] = beacon.distance
         map["macAddress"] = beacon.bluetoothAddress
+        map["proximity"] = rssiToProximity(beacon.rssi)
         return map
+    }
+
+    private fun rssiToProximity(rssi: Int): String {
+        if (rssi <= 55) {
+            return "near"
+        }
+
+        if (rssi <= 75) {
+           return "immediate"
+        }
+
+        if(rssi <= 100) {
+            return "far"
+        }
+
+        return "undefined"
     }
 
     fun regionToMap(region: Region): Map<String, Any> {
