@@ -39,25 +39,25 @@
     
     instance.rangingHandler = [[BSRangingStreamHandler alloc] initWithBeaconScannerPlugin:instance];
     FlutterEventChannel* streamChannelRanging =
-    [FlutterEventChannel eventChannelWithName:@"flutter_beacon_event_ranging"
+    [FlutterEventChannel eventChannelWithName:@"beacon_scanner_event_ranging"
                               binaryMessenger:[registrar messenger]];
     [streamChannelRanging setStreamHandler:instance.rangingHandler];
     
     instance.monitoringHandler = [[BSMonitoringStreamHandler alloc] initWithBeaconScannerPlugin:instance];
     FlutterEventChannel* streamChannelMonitoring =
-    [FlutterEventChannel eventChannelWithName:@"flutter_beacon_event_monitoring"
+    [FlutterEventChannel eventChannelWithName:@"beacon_scanner_event_monitoring"
                               binaryMessenger:[registrar messenger]];
     [streamChannelMonitoring setStreamHandler:instance.monitoringHandler];
     
     instance.bluetoothHandler = [[BSBluetoothStateHandler alloc] initWithBeaconScannerPlugin:instance];
     FlutterEventChannel* streamChannelBluetooth =
-    [FlutterEventChannel eventChannelWithName:@"flutter_bluetooth_state_changed"
+    [FlutterEventChannel eventChannelWithName:@"beacon_scanner_bluetooth_state_changed"
                               binaryMessenger:[registrar messenger]];
     [streamChannelBluetooth setStreamHandler:instance.bluetoothHandler];
     
     instance.authorizationHandler = [[BSAuthorizationStatusHandler alloc] initWithBeaconScannerPlugin:instance];
     FlutterEventChannel* streamChannelAuthorization =
-    [FlutterEventChannel eventChannelWithName:@"flutter_authorization_status_changed"
+    [FlutterEventChannel eventChannelWithName:@"beacon_scanner_authorization_status_changed"
                               binaryMessenger:[registrar messenger]];
     [streamChannelAuthorization setStreamHandler:instance.authorizationHandler];
 }

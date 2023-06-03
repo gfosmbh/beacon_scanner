@@ -21,12 +21,13 @@
     }
     
     NSNumber *rssi = [NSNumber numberWithInteger:beacon.rssi];
+    NSNumber *accuracy = [NSNumber numberWithDouble:beacon.accuracy];
     return @{
-             @"proximityUUID": [beacon.proximityUUID UUIDString],
+             @"proximityUUID": [beacon.uuid UUIDString],
              @"major": beacon.major,
              @"minor": beacon.minor,
              @"rssi": rssi,
-             @"accuracy": [NSString stringWithFormat:@"%.2f", beacon.accuracy],
+             @"accuracy": accuracy,
              @"proximity": proximity
              };
 }
