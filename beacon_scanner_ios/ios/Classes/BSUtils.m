@@ -23,7 +23,7 @@
     NSNumber *rssi = [NSNumber numberWithInteger:beacon.rssi];
     NSNumber *accuracy = [NSNumber numberWithDouble:beacon.accuracy];
     return @{
-             @"proximityUUID": [beacon.uuid UUIDString],
+             @"proximityUUID": [beacon.UUID UUIDString],
              @"major": beacon.major,
              @"minor": beacon.minor,
              @"rssi": rssi,
@@ -44,7 +44,7 @@
     
     return @{
              @"identifier": region.identifier,
-             @"proximityUUID": [region.proximityUUID UUIDString],
+             @"proximityUUID": [region.UUID UUIDString],
              @"major": major,
              @"minor": minor,
              };
@@ -58,11 +58,11 @@
     
     CLBeaconRegion *region = nil;
     if (proximityUUID && major && minor) {
-        region = [[CLBeaconRegion alloc] initWithProximityUUID:[[NSUUID alloc] initWithUUIDString:proximityUUID] major:[major intValue] minor:[minor intValue] identifier:identifier];
+        region = [[CLBeaconRegion alloc] initWithUUID:[[NSUUID alloc] initWithUUIDString:proximityUUID] major:[major intValue] minor:[minor intValue] identifier:identifier];
     } else if (proximityUUID && major) {
-        region = [[CLBeaconRegion alloc] initWithProximityUUID:[[NSUUID alloc] initWithUUIDString:proximityUUID] major:[major intValue] identifier:identifier];
+        region = [[CLBeaconRegion alloc] initWithUUID:[[NSUUID alloc] initWithUUIDString:proximityUUID] major:[major intValue] identifier:identifier];
     } else if (proximityUUID) {
-        region = [[CLBeaconRegion alloc] initWithProximityUUID:[[NSUUID alloc] initWithUUIDString:proximityUUID] identifier:identifier];
+        region = [[CLBeaconRegion alloc] initWithUUID:[[NSUUID alloc] initWithUUIDString:proximityUUID] identifier:identifier];
     }
     
     return region;
