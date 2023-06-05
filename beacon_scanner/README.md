@@ -1,6 +1,6 @@
 # beacon_scanner
 
-This plugin is based on flutter_beacon(https://pub.dev/packages/flutter_beacon) by Eyro Labs.
+This plugin is based on [flutter_beacon](https://pub.dev/packages/flutter_beacon) by Eyro Labs.
 This package can be combined with androids foreground services.
 It uses Android AltBeacon and iOS CoreLocation under the hood.
 
@@ -36,6 +36,7 @@ and if you want also background scanning:
 
 ### Setup specific for iOS
 
+Works only for 13+.
 In order to use beacons related features, apps are required to ask the location permission. It's a two step process:
 
 1. Declare the permission the app requires in configuration files
@@ -82,12 +83,11 @@ Ranging APIs are designed as reactive streams.
 ### Initializing Library
 
 ```dart
+final BeaconScanner beaconScanner = BeaconScanner.instance;
+
 try {
-  // if you want to manage manual checking about the required permissions
-  await flutterBeacon.initializeScanning;
-  
-  // or if you want to include automatic checking permission
-  await flutterBeacon.initializeAndCheckScanning;
+  // false - if you want to manage manual checking about the required permissions
+  await beaconScanner.initialize(true);
 } on PlatformException catch(e) {
   // library failed to initialize, check code and message
 }
@@ -102,14 +102,15 @@ if (Platform.isIOS) {
   // iOS platform, at least set identifier and proximityUUID for region scanning
   regions.add(Region(
       identifier: 'Apple Airlocate',
-      proximityUUID: 'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0'));
+      beaconId: IBeaconId(proximityUUID: 'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0'),
+  ));
 } else {
   // android platform, it can ranging out of beacon that filter all of Proximity UUID
   regions.add(Region(identifier: 'com.beacon'));
 }
 
 // to start ranging beacons
-_streamRanging = flutterBeacon.ranging(regions).listen((RangingResult result) {
+_streamRanging = beaconScanner.ranging(regions).listen((ScanResult result) {
   // result contains a region and list of beacons found
   // list can be empty if no matching beacons were found in range
 });
@@ -126,15 +127,17 @@ final regions = <Region>[];
 if (Platform.isIOS) {
   // iOS platform, at least set identifier and proximityUUID for region scanning
   regions.add(Region(
-      identifier: 'Apple Airlocate',
-      proximityUUID: 'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0'));
+    identifier: 'Apple Airlocate',
+    beaconId: IBeaconId(proximityUUID: 'E2C56DB5-DFFB-48D2-B060-D0F5A71096E0'),
+  ));
 } else {
   // Android platform, it can ranging out of beacon that filter all of Proximity UUID
   regions.add(Region(identifier: 'com.beacon'));
 }
 
 // to start monitoring beacons
-_streamMonitoring = flutterBeacon.monitoring(regions).listen((MonitoringResult result) {
+// even works when app is closed on iOS
+_streamMonitoring = beaconScanner.monitoring(regions).listen((MonitoringResult result) {
   // result contains a region, event type and event state
 });
 

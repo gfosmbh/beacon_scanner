@@ -9,14 +9,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
+  beacon_scanner_android:
+    dependency: "direct main"
+    description:
+      name: beacon_scanner_android
+      sha256: "29af0f09b30c7622b8b6f69baa9e2af585e0a02c348d52bab5c8630046fc2c56"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
+  beacon_scanner_ios:
+    dependency: "direct main"
+    description:
+      name: beacon_scanner_ios
+      sha256: "518d04c9bc8f04a07c84a7a2506d3d24eaf30edb1109e234c9ad8f37ab550348"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3+1"
   beacon_scanner_platform_interface:
     dependency: "direct main"
     description:
       name: beacon_scanner_platform_interface
-      sha256: ae93534599a6b900d587a4e5bdf698da9f347cb24dc7c779bfdb5e7f1a0fb4d1
+      sha256: bf90a70f73ad58f44567ee58d84afdf0e733e1743519469efc13786b08007c70
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   boolean_selector:
     dependency: transitive
     description:

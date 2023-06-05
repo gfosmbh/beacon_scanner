@@ -1,5 +1,6 @@
 import 'package:beacon_scanner_platform_interface/beacon_scanner_platform_interface.dart';
 
+/// Service for interacting with bluetooth beacon which uses iBeacon protocol
 class BeaconScanner {
   /// Instance of Beacon-Service
   static final BeaconScanner instance = BeaconScanner._();

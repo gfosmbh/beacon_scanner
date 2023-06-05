@@ -1,6 +1,6 @@
 name: beacon_scanner
 description: A Flutter plugin for Scanning iBeacon.
-version: 0.0.1
+version: 0.0.3
 
 environment:
   sdk: ">=2.18.0 <4.0.0"
@@ -17,9 +17,9 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  beacon_scanner_android: ^0.0.1
-  beacon_scanner_ios: ^0.0.1
-  beacon_scanner_platform_interface: ^0.0.2
+  beacon_scanner_android: ^0.0.3
+  beacon_scanner_ios: ^0.0.3+1
+  beacon_scanner_platform_interface: ^0.0.3
 
 dev_dependencies:
   flutter_test:
