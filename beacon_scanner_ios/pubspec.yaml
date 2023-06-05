@@ -1,7 +1,7 @@
 name: beacon_scanner_ios
 description: The iOS implementation of beacon_scanner_platform_interface
 repository: https://github.com/Lukangi/beacon_scanner/tree/main/beacon_scanner_ios
-version: 0.0.2
+version: 0.0.3
 
 environment:
   sdk: ">=2.18.0 <4.0.0"
@@ -18,7 +18,7 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  beacon_scanner_platform_interface: ^0.0.2
+  beacon_scanner_platform_interface: ^0.0.3
 
 dev_dependencies:
   flutter_test:
