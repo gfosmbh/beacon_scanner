@@ -1,6 +1,6 @@
 # beacon_scanner_android
 
-The Android implementation of beacon_scanner_android
+The Android implementation of beacon_scanner
 
 ## Usage
 
