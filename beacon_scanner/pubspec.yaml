@@ -1,5 +1,7 @@
 name: beacon_scanner
 description: A Flutter plugin for Scanning iBeacon.
+repository: https://github.com/Lukangi/beacon_scanner/tree/main/beacon_scanner
+issue_tracker: https://github.com/Lukangi/beacon_scanner/issues?q=is%3Aissue+is%3Aopen
 version: 0.0.3
 
 environment:
