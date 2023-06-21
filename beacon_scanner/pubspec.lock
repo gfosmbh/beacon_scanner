@@ -13,10 +13,10 @@ packages:
     dependency: "direct main"
     description:
       name: beacon_scanner_android
-      sha256: "29af0f09b30c7622b8b6f69baa9e2af585e0a02c348d52bab5c8630046fc2c56"
+      sha256: "3da2ae9c318d03fcf04f44e9b7d8110cb35e308ca24dc39ffe395539e357b1e2"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.3+1"
   beacon_scanner_ios:
     dependency: "direct main"
     description:
