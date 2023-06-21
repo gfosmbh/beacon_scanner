@@ -184,9 +184,14 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
             }
 
             "requestAuthorization" -> {
+                if (activityPluginBinding == null) {
+                    result.success(false)
+                    return
+                }
+
                 if (!platform!!.checkLocationServicesPermission()) {
                     flutterResult = result
-                    platform!!.requestAuthorization()
+                    platform!!.requestAuthorization(activityPluginBinding!!.activity)
                     return
                 }
 
@@ -210,9 +215,14 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
             }
 
             "openBluetoothSettings" -> {
+                if (activityPluginBinding == null) {
+                    result.success(false)
+                    return
+                }
+
                 if (!platform!!.checkBluetoothIfEnabled()) {
                     flutterResultBluetooth = result
-                    platform!!.openBluetoothSettings()
+                    platform!!.openBluetoothSettings(activityPluginBinding!!.activity)
                     return
                 }
                 result.success(true)
@@ -238,12 +248,12 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
             return
         }
         flutterResult = result
-        if (!platform!!.checkBluetoothIfEnabled()) {
-            platform!!.openBluetoothSettings()
+        if (!platform!!.checkBluetoothIfEnabled() && activityPluginBinding != null) {
+            platform!!.openBluetoothSettings(activityPluginBinding!!.activity)
             return
         }
-        if (!platform!!.checkLocationServicesPermission()) {
-            platform!!.requestAuthorization()
+        if (!platform!!.checkLocationServicesPermission() && activityPluginBinding != null) {
+            platform!!.requestAuthorization(activityPluginBinding!!.activity)
             return
         }
         if (!platform!!.checkLocationServicesIfEnabled()) {
@@ -276,7 +286,7 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
         var locationServiceAllowed = false
         if (permissions.isNotEmpty() && grantResults.isNotEmpty()) {
             val permission = permissions[0]
-            if (!platform!!.shouldShowRequestPermissionRationale(permission)) {
+            if (activityPluginBinding != null && !platform!!.shouldShowRequestPermissionRationale(permission, activityPluginBinding!!.activity)) {
                 val grantResult = grantResults[0]
                 if (grantResult == PackageManager.PERMISSION_GRANTED) {
                     //allowed
@@ -312,8 +322,8 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?): Boolean {
         val bluetoothEnabled = requestCode == REQUEST_CODE_BLUETOOTH && resultCode == Activity.RESULT_OK
         if (bluetoothEnabled) {
-            if (!platform!!.checkLocationServicesPermission()) {
-                platform!!.requestAuthorization()
+            if (!platform!!.checkLocationServicesPermission() && activityPluginBinding != null) {
+                platform!!.requestAuthorization(activityPluginBinding!!.activity)
             } else {
                 if (flutterResultBluetooth != null) {
                     flutterResultBluetooth!!.success(true)

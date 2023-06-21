@@ -21,24 +21,40 @@ internal class FlutterPlatform(private val context: Context) {
         context.startActivity(intent)
     }
 
-    fun openBluetoothSettings() {
+    fun openBluetoothSettings(activity: Activity) {
         val intent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
-        // TODO: Do not cast context to Activity
-        (context as Activity).startActivityForResult(intent, BeaconScannerPlugin.REQUEST_CODE_BLUETOOTH)
+        activity.startActivityForResult(intent, BeaconScannerPlugin.REQUEST_CODE_BLUETOOTH)
     }
 
-    fun requestAuthorization() {
-        // TODO: Do not cast context to Activity
-        ActivityCompat.requestPermissions(
-            (context as Activity), arrayOf<String>(
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ), BeaconScannerPlugin.REQUEST_CODE_LOCATION
-        )
+    fun requestAuthorization(activity: Activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            ActivityCompat.requestPermissions(
+                activity, arrayOf<String>(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.BLUETOOTH_SCAN,
+                ), BeaconScannerPlugin.REQUEST_CODE_LOCATION
+            )
+        } else {
+            ActivityCompat.requestPermissions(
+                activity, arrayOf<String>(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                ), BeaconScannerPlugin.REQUEST_CODE_LOCATION
+            )
+        }
     }
 
     fun checkLocationServicesPermission(): Boolean {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(
+                context,
+                Manifest.permission.BLUETOOTH_SCAN
+            ) == PackageManager.PERMISSION_GRANTED
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             ContextCompat.checkSelfPermission(
                 context,
                 Manifest.permission.ACCESS_COARSE_LOCATION
@@ -71,8 +87,7 @@ internal class FlutterPlatform(private val context: Context) {
     val isBroadcastSupported: Boolean
         get() = BeaconTransmitter.checkTransmissionSupported(context) == 0
 
-    fun shouldShowRequestPermissionRationale(permission: String?): Boolean {
-        // TODO: Do not cast context to Activity
-        return ActivityCompat.shouldShowRequestPermissionRationale((context as Activity), permission!!)
+    fun shouldShowRequestPermissionRationale(permission: String?, activity: Activity): Boolean {
+        return ActivityCompat.shouldShowRequestPermissionRationale(activity, permission!!)
     }
 }
