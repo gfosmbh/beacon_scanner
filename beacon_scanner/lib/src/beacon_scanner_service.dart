@@ -52,11 +52,11 @@ class BeaconScanner {
   /// This will fires [MonitoringResult] whenever the iBeacons in range.
   Stream<MonitoringResult> monitoring(List<Region> regions) => BeaconScannerPlatform.instance.monitoring(regions);
 
-  /// Customize duration of the beacon scan on the Android Platform.
+  /// Customize period of the beacon scan on the Android Platform.
   Future<bool> setScanPeriod(Duration scanPeriod) async => BeaconScannerPlatform.instance.setScanPeriod(scanPeriod.inMilliseconds);
 
   /// Customize duration of the beacon scan on the Android Platform.
-  Future<bool> setScanDuration(Duration scanDuration) async => BeaconScannerPlatform.instance.setScanPeriod(scanDuration.inMilliseconds);
+  Future<bool> setScanDuration(Duration scanDuration) async => BeaconScannerPlatform.instance.setScanDuration(scanDuration.inMilliseconds);
 
   /// Start checking for bluetooth state changed.
   ///
