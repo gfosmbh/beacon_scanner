@@ -32,7 +32,7 @@ internal class FlutterBluetoothStateReceiver(private val context: Context) : Bro
     }
 
     @SuppressLint("MissingPermission")
-    override fun onListen(o: Any, eventSink: EventSink) {
+    override fun onListen(o: Any?, eventSink: EventSink) {
         var state = BluetoothAdapter.STATE_OFF
         val bluetoothManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager?
         if (bluetoothManager != null) {
@@ -47,7 +47,7 @@ internal class FlutterBluetoothStateReceiver(private val context: Context) : Bro
         context.registerReceiver(this, filter)
     }
 
-    override fun onCancel(o: Any) {
+    override fun onCancel(o: Any?) {
         context.unregisterReceiver(this)
     }
 }

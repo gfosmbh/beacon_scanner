@@ -129,8 +129,9 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
                 if (beaconManager != null && !beaconManager!!.isBound(beaconScanner!!.beaconConsumer)) {
                     flutterResult = result
                     beaconManager!!.bind(beaconScanner!!.beaconConsumer)
+                } else {
+                    result.success(true)
                 }
-                result.success(true)
             }
 
             "initializeAndCheckScanning" -> initializeAndCheck(result)
@@ -269,11 +270,11 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
     }
 
     private val locationAuthorizationStatusStreamHandler: EventChannel.StreamHandler = object : EventChannel.StreamHandler {
-        override fun onListen(arguments: Any, events: EventSink) {
+        override fun onListen(arguments: Any?, events: EventSink) {
             eventSinkLocationAuthorizationStatus = events
         }
 
-        override fun onCancel(arguments: Any) {
+        override fun onCancel(arguments: Any?) {
             eventSinkLocationAuthorizationStatus = null
         }
     }

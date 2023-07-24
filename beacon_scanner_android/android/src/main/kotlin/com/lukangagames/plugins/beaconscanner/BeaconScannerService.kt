@@ -26,7 +26,7 @@ internal class BeaconScannerService(plugin: BeaconScannerPlugin, context: Contex
     private class MainThreadEventSink internal constructor(private val eventSink: EventSink) : EventSink {
         private val handler: Handler = Handler(Looper.getMainLooper())
 
-        override fun success(o: Any) {
+        override fun success(o: Any?) {
             handler.post { eventSink.success(o) }
         }
 
@@ -38,18 +38,18 @@ internal class BeaconScannerService(plugin: BeaconScannerPlugin, context: Contex
     }
 
     val rangingStreamHandler: EventChannel.StreamHandler = object : EventChannel.StreamHandler {
-        override fun onListen(o: Any, eventSink: EventSink) {
+        override fun onListen(o: Any?, eventSink: EventSink) {
             Log.d("RANGING", "Start ranging = $o")
             startRanging(o, eventSink)
         }
 
-        override fun onCancel(o: Any) {
+        override fun onCancel(o: Any?) {
             Log.d("RANGING", "Stop ranging = $o")
             stopRanging()
         }
     }
 
-    private fun startRanging(o: Any, eventSink: EventSink) {
+    private fun startRanging(o: Any?, eventSink: EventSink) {
         if (o is List<*>) {
             if (regionRanging == null) {
                 regionRanging = ArrayList()
@@ -118,16 +118,16 @@ internal class BeaconScannerService(plugin: BeaconScannerPlugin, context: Contex
         }
     }
     val monitoringStreamHandler: EventChannel.StreamHandler = object : EventChannel.StreamHandler {
-        override fun onListen(o: Any, eventSink: EventSink) {
+        override fun onListen(o: Any?, eventSink: EventSink) {
             startMonitoring(o, eventSink)
         }
 
-        override fun onCancel(o: Any) {
+        override fun onCancel(o: Any?) {
             stopMonitoring()
         }
     }
 
-    private fun startMonitoring(o: Any, eventSink: EventSink) {
+    private fun startMonitoring(o: Any?, eventSink: EventSink) {
         Log.d(TAG, "START MONITORING=$o")
         if (o is List<*>) {
             if (regionMonitoring == null) {

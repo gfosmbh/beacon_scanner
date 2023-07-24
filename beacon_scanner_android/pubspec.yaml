@@ -1,7 +1,7 @@
 name: beacon_scanner_android
 description: The Android implementation of beacon_scanner_platform_interface
 repository: https://github.com/Lukangi/beacon_scanner/tree/main/beacon_scanner_android
-version: 0.0.3+1
+version: 0.0.4
 
 environment:
   sdk: ">=2.18.0 <4.0.0"
