@@ -180,8 +180,8 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
                     val flag = platform!!.checkBluetoothIfEnabled()
                     result.success(if (flag) "STATE_ON" else "STATE_OFF")
                 } catch (ignored: RuntimeException) {
+                    result.success("STATE_UNSUPPORTED")
                 }
-                result.success("STATE_UNSUPPORTED")
             }
 
             "requestAuthorization" -> {
