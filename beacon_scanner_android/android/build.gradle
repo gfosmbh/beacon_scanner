@@ -1,51 +1,60 @@
-group 'com.lukangagames.plugins.beaconscanner'
-version '1.0-SNAPSHOT'
-
 buildscript {
-    ext.kotlin_version = '1.7.10'
     repositories {
         google()
         mavenCentral()
     }
-
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
-rootProject.allprojects {
-    repositories {
-        google()
-        mavenCentral()
+        classpath 'com.android.tools.build:gradle:8.7.3'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0'
     }
 }
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+group 'com.gfos.plugins.beaconscanner'
+version '1.0-SNAPSHOT'
+
+repositories {
+    google()
+    mavenCentral()
+    maven {
+        url 'https://storage.googleapis.com/download.flutter.io'
+    }
+}
+
 android {
-    compileSdkVersion 33
+    compileSdkVersion = 36
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    defaultConfig {
-        minSdkVersion 18
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
+    }
+
+    defaultConfig {
+        minSdk 21
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
+    namespace 'com.gfos.plugins.beaconscanner'
+
+    lint {
+        disable 'InvalidPackage'
+        abortOnError false
+    }
 }
 
 dependencies {
-    implementation 'org.altbeacon:android-beacon-library:2.19.5'
+    implementation 'org.altbeacon:android-beacon-library:2.21.2'
+    implementation 'androidx.core:core-ktx:1.17.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    compileOnly 'io.flutter:flutter_embedding_release:1.0.0-2994f7e1e682039464cb25e31a78b86a3c59b695'
 }

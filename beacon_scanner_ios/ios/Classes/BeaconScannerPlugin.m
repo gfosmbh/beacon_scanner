@@ -32,7 +32,7 @@
 
 @implementation BeaconScannerPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-    FlutterMethodChannel* channel = [FlutterMethodChannel methodChannelWithName:@"plugins.lukangagames.com/beacon_scanner_android"
+    FlutterMethodChannel* channel = [FlutterMethodChannel methodChannelWithName:@"plugins.gfos.com/beacon_scanner_ios"
                                                                 binaryMessenger:[registrar messenger]];
     BeaconScannerPlugin* instance = [[BeaconScannerPlugin alloc] init];
     [registrar addMethodCallDelegate:instance channel:channel];

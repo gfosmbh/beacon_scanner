@@ -1,4 +1,4 @@
-package com.lukangagames.plugins.beaconscanner
+package com.gfos.plugins.beaconscanner
 
 import android.content.Context
 import android.content.Intent

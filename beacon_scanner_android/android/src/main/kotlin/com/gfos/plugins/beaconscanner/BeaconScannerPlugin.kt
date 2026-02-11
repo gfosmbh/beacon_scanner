@@ -1,4 +1,4 @@
-package com.lukangagames.plugins.beaconscanner
+package com.gfos.plugins.beaconscanner
 
 import android.app.Activity
 import android.content.Context
@@ -67,7 +67,7 @@ class BeaconScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Req
         }
         platform = FlutterPlatform(context)
         beaconScanner = BeaconScannerService(this, context)
-        channel = MethodChannel(messenger, "plugins.lukangagames.com/beacon_scanner_android")
+        channel = MethodChannel(messenger, "plugins.gfos.com/beacon_scanner_android")
         channel?.setMethodCallHandler(this)
         eventChannel = EventChannel(messenger, "beacon_scanner_event_ranging")
         eventChannel?.setStreamHandler(beaconScanner!!.rangingStreamHandler)

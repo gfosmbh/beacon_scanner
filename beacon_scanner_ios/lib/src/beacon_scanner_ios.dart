@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:beacon_scanner_platform_interface/beacon_scanner_platform_interface.dart';
+import 'package:beacon_scanner_gfos_platform_interface/beacon_scanner_platform_interface.dart';
 import 'package:flutter/services.dart';
 
 /// An implementation of [BeaconScannerPlatform] for iOS.
@@ -11,7 +11,7 @@ class BeaconScannerIOS extends BeaconScannerPlatform {
   }
 
   /// Method Channel used to communicate to native code.
-  static const MethodChannel _channel = MethodChannel('plugins.lukangagames.com/beacon_scanner_android');
+  static const MethodChannel _channel = MethodChannel('plugins.gfos.com/beacon_scanner_ios');
 
   /// Event Channel used to communicate to native code ranging beacons.
   static const EventChannel _rangingChannel = EventChannel('beacon_scanner_event_ranging');

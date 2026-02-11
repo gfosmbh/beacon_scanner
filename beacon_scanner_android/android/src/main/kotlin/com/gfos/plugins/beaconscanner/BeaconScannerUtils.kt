@@ -1,4 +1,4 @@
-package com.lukangagames.plugins.beaconscanner
+package com.gfos.plugins.beaconscanner
 
 import android.util.Log
 import org.altbeacon.beacon.Beacon

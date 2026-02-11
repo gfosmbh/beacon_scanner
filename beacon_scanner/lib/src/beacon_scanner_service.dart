@@ -1,4 +1,4 @@
-import 'package:beacon_scanner_platform_interface/beacon_scanner_platform_interface.dart';
+import 'package:beacon_scanner_gfos_platform_interface/beacon_scanner_platform_interface.dart';
 
 /// Service for interacting with bluetooth beacon which uses iBeacon protocol
 class BeaconScanner {
