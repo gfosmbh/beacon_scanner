@@ -1,7 +1,7 @@
 name: beacon_scanner_gfos_android
 description: The Android implementation of beacon_scanner_platform_interface
 repository: https://github.com/gfosmbh/beacon_scanner/tree/main/beacon_scanner_android
-version: 0.1.0
+version: 0.1.1
 
 environment:
   sdk: ">=3.8.0 <4.0.0"
